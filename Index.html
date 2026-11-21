@@ -8,12 +8,13 @@
 
 <style>
 :root {
-    --navy: #061f3a;
-    --blue: #0866e9;
-    --yellow: #ffdf40;
-    --text: #161b22;
-    --muted: #626b76;
-    --border: #cbd0d6;
+    --orange: #F68D1F;
+    --orange-dark: #E6821B;
+    --orange-light: #FCE3C8;
+    --orange-pale: #FFF3E6;
+    --text: #202124;
+    --muted: #687078;
+    --border: #e5e7eb;
 }
 
 * {
@@ -36,9 +37,9 @@ body {
 /* NAVIGATION */
 
 .top-nav {
-    background: var(--navy);
-    color: white;
-    padding: 25px 8% 15px;
+    background: var(--orange-light);
+    color: var(--text);
+    padding: 22px 8% 18px;
 }
 
 .nav-inner {
@@ -51,14 +52,25 @@ body {
 }
 
 .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     font-size: 29px;
     font-weight: 800;
     letter-spacing: -1px;
     white-space: nowrap;
 }
 
+.logo-mark {
+    display: block;
+    height: 48px;
+    width: auto;
+    border-radius: 7px;
+    background: var(--orange);
+}
+
 .logo span {
-    color: var(--yellow);
+    color: var(--orange-dark);
 }
 
 .account-nav {
@@ -69,7 +81,7 @@ body {
 }
 
 .language {
-    background: #19344f;
+    background: rgba(255,255,255,.62);
     padding: 14px 18px;
     border-radius: 10px;
 }
@@ -78,26 +90,21 @@ body {
     font-size: 27px;
 }
 
-.login {
-    background: #f2f5f8;
-    color: #111;
-    padding: 14px 35px;
-    border-radius: 10px;
-    font-weight: bold;
-}
 
 /* CATEGORY BUTTONS */
 
 .category-nav {
     display: flex;
     gap: 12px;
-    margin-top: 30px;
+    margin-top: 25px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(32,33,36,.12);
 }
 
 .category-nav button {
-    color: white;
-    background: transparent;
-    border: 1px solid #526477;
+    color: var(--orange-dark);
+    background: white;
+    border: 1px solid rgba(230,130,27,.25);
     border-radius: 35px;
     padding: 13px 23px;
     font-size: 16px;
@@ -106,16 +113,18 @@ body {
 }
 
 .category-nav button.active {
-    background: var(--blue);
-    border-color: var(--blue);
+    background: var(--orange-dark);
+    color: white;
+    border-color: var(--orange-dark);
 }
 
 /* HERO */
 
 .hero {
-    background: var(--navy);
+    background: var(--orange);
     color: white;
-    padding: 25px 8% 65px;
+    padding: 34px 8% 55px;
+    border-bottom: 1px solid rgba(230,130,27,.25);
 }
 
 .hero-inner {
@@ -125,6 +134,7 @@ body {
 
 .hero h1 {
     font-size: clamp(30px, 3vw, 45px);
+    color: white;
     margin: 15px 0 45px;
     letter-spacing: -1px;
 }
@@ -136,22 +146,29 @@ body {
 }
 
 .search-options span {
-    border: 1px solid #718297;
+    border: 1px solid rgba(255,255,255,.7);
+    background: var(--orange-pale);
+    color: var(--orange-dark);
     padding: 10px 18px;
     border-radius: 10px;
     font-size: 14px;
+    font-weight: 700;
 }
 
 .flight-fields {
     display: grid;
     grid-template-columns: 1.1fr 1.25fr 1fr 1fr auto;
-    gap: 5px;
+    gap: 8px;
+    padding: 8px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow: 0 8px 28px rgba(25, 35, 45, .06);
 }
 
 .field {
     background: white;
     color: var(--text);
-    border: none;
+    border: 1px solid var(--border);
     min-width: 0;
     text-align: left;
     padding: 20px;
@@ -160,15 +177,15 @@ body {
 }
 
 .field:first-child {
-    border-radius: 15px 0 0 15px;
+    border-radius: 11px;
 }
 
 .field:nth-child(4) {
-    border-radius: 0 15px 15px 0;
+    border-radius: 11px;
 }
 
 .field:hover {
-    background: #f0f5fc;
+    background: var(--orange-pale);
 }
 
 .field-label {
@@ -193,23 +210,24 @@ body {
 
 .search-button {
     border: none;
-    background: var(--blue);
-    color: white;
+    background: white;
+    color: var(--orange-dark);
     padding: 0 25px;
-    border-radius: 15px;
+    border-radius: 11px;
     font-weight: bold;
     font-size: 17px;
     cursor: pointer;
 }
 
 .search-button:hover {
-    background: #0055c7;
+    background: #FFF0DE;
 }
 
 .notice {
     display: none;
-    background: #fff3cd;
-    color: #795600;
+    background: var(--orange-pale);
+    color: var(--orange-dark);
+    border: 1px solid rgba(230,130,27,.3);
     padding: 16px;
     margin-top: 15px;
     border-radius: 8px;
@@ -223,6 +241,17 @@ body {
     max-width: 1450px;
     margin: 85px auto;
     padding: 0 40px;
+}
+
+.content h2,
+.faq-section h2,
+.planning-section h2,
+.booking-section h2 {
+    display: inline-block;
+    background: white;
+    color: var(--orange-dark);
+    border-radius: 8px;
+    padding: 7px 13px;
 }
 
 .content h2 {
@@ -239,7 +268,8 @@ body {
     margin-top: 30px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    background: #f2f5f9;
+    background: #FFFFFF;
+    border: 1px solid var(--border);
     border-radius: 12px;
     overflow: hidden;
 }
@@ -267,8 +297,8 @@ body {
 }
 
 .booking-button {
-    background: var(--yellow);
-    color: var(--navy);
+    background: var(--orange);
+    color: white;
     border: none;
     border-radius: 8px;
     padding: 16px 28px;
@@ -368,13 +398,13 @@ body {
 }
 
 .planning-tabs button:hover {
-    border-color: var(--blue);
+    border-color: var(--orange);
 }
 
 .planning-tabs button.active {
-    background: var(--navy);
+    background: var(--orange);
     color: white;
-    border-color: var(--navy);
+    border-color: var(--orange);
 }
 
 /* INFORMATION LINKS */
@@ -393,7 +423,7 @@ body {
 }
 
 .quick-links a:hover {
-    color: var(--blue);
+    color: var(--orange-dark);
     text-decoration: underline;
 }
 
@@ -417,7 +447,7 @@ body {
 }
 
 .itinerary-time {
-    color: var(--blue);
+    color: var(--orange-dark);
     font-weight: bold;
     min-width: 100px;
 }
@@ -437,7 +467,8 @@ body {
 }
 
 .packing-category {
-    background: #f5f7fa;
+    background: #FFFFFF;
+    border: 1px solid var(--border);
     border-radius: 10px;
     padding: 22px;
 }
@@ -458,7 +489,7 @@ body {
 
 .packing-category li::before {
     content: "□";
-    color: var(--blue);
+    color: var(--orange-dark);
     margin-right: 10px;
     font-size: 18px;
 }
@@ -466,7 +497,8 @@ body {
 /* BOOKING WIDGET */
 
 .booking-section {
-    background: #f0f4f9;
+    background: #FFFFFF;
+    border-top: 1px solid var(--border);
     padding: 75px 30px;
     text-align: center;
     scroll-margin-top: 20px;
@@ -494,14 +526,14 @@ body {
 /* FOOTER */
 
 footer {
-    background: var(--navy);
+    background: #202124;
     color: white;
     padding: 45px 8%;
     text-align: center;
 }
 
 footer p {
-    color: #c5d3e2;
+    color: #d1d5db;
     margin-top: 12px;
     font-size: 14px;
 }
@@ -609,7 +641,8 @@ footer p {
     <div class="nav-inner">
 
         <div class="logo">
-            ✈ CHYK<span>AIR</span>
+            <img class="logo-mark" src="chyk-air-logo.png" alt="CHYK Camp logo">
+            <span>CHYK<span>AIR</span></span>
         </div>
 
         <div class="account-nav">
@@ -618,7 +651,6 @@ footer p {
                 English (AU) 🇦🇺 Australia &nbsp; $ AUD
             </span>
             <span class="heart">♥</span>
-            <span class="login">Log in</span>
         </div>
 
     </div>
@@ -1059,7 +1091,8 @@ footer p {
 <footer>
 
     <div class="logo">
-        ✈ CHYK<span>AIR</span>
+        <img class="logo-mark" src="chyk-air-logo.png" alt="CHYK Camp logo">
+        <span>CHYK<span>AIR</span></span>
     </div>
 
     <p>Where the journey becomes the destination.</p>
