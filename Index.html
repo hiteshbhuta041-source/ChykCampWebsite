@@ -131,6 +131,14 @@ body {
     margin: auto;
 }
 
+.title-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
 .hero h1 {
     font-size: clamp(30px, 3vw, 45px);
     color: white;
@@ -156,7 +164,7 @@ body {
 
 .flight-fields {
     display: grid;
-    grid-template-columns: 1.1fr 1.25fr 1fr 1fr auto;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.2fr) repeat(3, minmax(0, .9fr)) auto;
     gap: 8px;
     padding: 8px;
     border: 1px solid var(--border);
@@ -220,11 +228,20 @@ body {
 }
 
 .field-label {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 7px;
     font-size: 14px;
     font-weight: bold;
     color: var(--muted);
     margin-bottom: 8px;
+}
+
+.field-icon {
+    width: 19px;
+    height: 19px;
+    object-fit: contain;
+    flex-shrink: 0;
 }
 
 .field strong {
@@ -243,7 +260,9 @@ body {
     border: none;
     background: white;
     color: var(--orange-dark);
-    padding: 0 25px;
+    padding: 0 20px;
+    min-width: 100px;
+    white-space: nowrap;
     border-radius: 11px;
     font-weight: bold;
     font-size: 17px;
@@ -307,9 +326,17 @@ body {
 
 .destination-image {
     min-height: 330px;
-    background:
-        url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1200")
-        center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: none;
+}
+
+.destination-image img {
+    width: 35%;
+    height: auto;
+    object-fit: contain;
 }
 
 .destination-info {
@@ -347,6 +374,28 @@ body {
     padding: 0 40px;
 }
 
+.faq-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-question-content {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    min-width: 0;
+    text-align: left;
+}
+
+.faq-icon {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    flex: 0 0 22px;
+}
+
 .faq-section h2 {
     font-size: 36px;
     margin-bottom: 25px;
@@ -374,25 +423,6 @@ body {
     gap: 15px;
     font-size: 17px;
     font-weight: bold;
-    text-align: left;
-}
-
-/* Keep the question text and its icon together on the left. */
-.faq-question {
-    display: inline-flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 10px;
-    min-width: 0;
-    text-align: left;
-}
-
-.faq-icon {
-    display: block;
-    width: 22px;
-    height: 22px;
-    object-fit: contain;
-    flex: 0 0 22px;
 }
 
 .faq-item summary::-webkit-details-marker {
@@ -416,6 +446,34 @@ body {
     font-size: 15px;
 }
 
+.faq-answer p + p {
+    margin-top: 12px;
+}
+
+.faq-answer ul {
+    margin: 8px 0 0 20px;
+}
+
+.faq-answer li + li {
+    margin-top: 8px;
+}
+
+.faq-answer a {
+    color: var(--orange-dark);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+/* PLANNING COMING SOON */
+
+.planning-coming-soon {
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 1.7;
+}
+
 /* START PLANNING */
 
 .planning-section {
@@ -425,6 +483,8 @@ body {
 }
 
 .planning-section h2 {
+    display: block;
+    width: fit-content;
     font-size: 30px;
     margin-bottom: 22px;
 }
@@ -437,11 +497,16 @@ body {
 }
 
 .planning-tabs button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     background: white;
     border: 1px solid var(--border);
     border-radius: 10px;
     padding: 12px 25px;
     font-size: 16px;
+    font-family: inherit;
     cursor: pointer;
     color: var(--text);
     transition: .2s;
@@ -455,6 +520,13 @@ body {
     background: var(--orange);
     color: white;
     border-color: var(--orange);
+}
+
+.tab-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    flex-shrink: 0;
 }
 
 /* INFORMATION LINKS */
@@ -639,6 +711,15 @@ body {
     border-bottom: 1px solid var(--border);
 }
 
+.help-link {
+    cursor: pointer;
+}
+
+.help-link:hover {
+    color: var(--orange-dark);
+    text-decoration: underline;
+}
+
 .merch-link {
     display: inline-flex;
     align-items: center;
@@ -777,7 +858,7 @@ footer p {
 
 /* RESPONSIVE */
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
     .account-nav {
         gap: 12px;
     }
@@ -838,19 +919,6 @@ footer p {
         grid-template-columns: 1fr;
     }
 
-    .destination-image {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-    }
-
-    .destination-image img {
-        width: 20%;
-        height: auto;
-        object-fit: contain;
-    }
-
     .destination-info {
         padding: 25px;
     }
@@ -896,15 +964,14 @@ footer p {
 
         <div class="logo">
             <img class="logo-mark" src="chyk-air-logo-transparent-orange.png" alt="CHYK Camp logo">
-            <span>CHYK<span>AIR</span></span>
+            <span>National <span>Chyk </span>Camp <span>2027</span>
         </div>
 
         <div class="account-nav">
-            <span>Help</span>
+            <span class="help-link" onclick="openFaqSection()">Help</span>
             <span class="language">
                 English (AU) 🇦🇺 Australia &nbsp; $ AUD
             </span>
-            <span class="heart">♥</span>
         </div>
 
     </div>
@@ -926,7 +993,10 @@ footer p {
         </button>
     </div>
 
-    <h1>One journey. A world beyond.</h1>
+    <h1>
+        Beyond the Frontiers
+        <img src="Icons/plane.png" class="title-icon" alt="">
+    </h1>
 
     <div class="search-options">
         <span>One way</span>
@@ -949,10 +1019,23 @@ footer p {
         </label>
 
         <label class="field">
-            <span class="field-label">Depart</span>
+            <span class="field-label">
+                Depart
+                <img src="Icons/departures.png" class="field-icon" alt="">
+            </span>
             <input type="text" value="12 Mar 2027" readonly aria-label="Departure date: 12 March 2027"
-                   onfocus="showNotice()" onblur="hideNotice()">
+                    onfocus="showNotice()" onblur="hideNotice()">
             <small>Friday</small>
+        </label>
+
+        <label class="field">
+            <span class="field-label">
+                Return
+                <img src="Icons/landing.png" class="field-icon" alt="">
+            </span>
+            <input type="text" value="14 Mar 2027" readonly aria-label="Return date: 14 March 2027"
+                   onfocus="showNotice()" onblur="hideNotice()">
+            <small>Sunday</small>
         </label>
 
         <label class="field">
@@ -969,9 +1052,9 @@ footer p {
     </div>
 
     <div id="notice" class="notice">
-        ✈ <strong>Flight unavailable!</strong><br>
-        Sorry, flights beyond the frontier don't run at
-        this time/date. Your journey is already scheduled!
+        ✈ <strong>Sorry, you can't edit these!</strong><br>
+        There's only one flight next year that can take you
+        to beyond the frontier!
     </div>
 
 </div>
@@ -982,11 +1065,11 @@ footer p {
 
 <section class="content" id="destination">
 
-    <h2>Discover your destination</h2>
+    <h2>Get Ready For Take Off!</h2>
 
     <p>
-        Your next adventure is closer than you think.
-        Get ready for three days of connection, discovery and adventure.
+        Welcome to the landing page for National Chyk Camp 2027.
+        Here you'll find camp details, FAQ's and all relevant links.
     </p>
 
     <div class="destination-card">
@@ -997,7 +1080,7 @@ footer p {
 
         <div class="destination-info">
 
-            <h3>Beyond The Frontier</h3>
+            <h3>Beyond The Frontiers</h3>
 
             <p>Crosslands Youth & Convention Centre</p>
             <p>Galston, New South Wales, Australia</p>
@@ -1005,7 +1088,14 @@ footer p {
             <br>
 
             <p><strong>Departure:</strong> 12 March 2027</p>
-            <p><strong>Duration:</strong> 3 days, 2 nights</p>
+            <p><strong>Return:</strong> 14 March 2027</p>
+            <p><strong>Flight Duration:</strong> 3 days, 2 nights</p>
+
+            <br>
+            <p><strong>Early Bird Tickets </strong>(Available until xx/xx/xxxx) - </p>
+            <p><strong>     Student Tickets:</strong> $268</p>
+            <p><strong>     Working Tickets:</strong> $295</p>
+            
 
             <button class="booking-button" onclick="scrollToBooking()">
                 Reserve your place →
@@ -1028,30 +1118,88 @@ footer p {
         <div>
 
             <details class="faq-item" id="faq-flights">
-                <summary><span class="faq-question"><img src="Icons/camp.png" class="faq-icon" alt="">What is CHYK Camp?</span></summary>
+                <summary class="faq-title">
+                    <span class="faq-question-content">What is CHYK Camp?
+                    </span>
+                </summary>      
                 <div class="faq-answer">
-                    FAQ placeholder. Add information about the camp here.
+                    <p>
+                        CHYK Camp is an immersive retreat led by <strong>Pujya Swami Swaroopananda</strong>,
+                        the Global Head of Chinmaya Mission. It provides an opportunity to explore the
+                        divine knowledge found in Hindu scriptures, surrounded by like-minded individuals
+                        from across Australia and New Zealand.
+                    </p>
+                    <p>
+                        At this National CHYK Camp, you will learn directly from Pujya Swamiji's new book,
+                        <strong><em>You Are the Sky: An Ancient Guide to Modern Feelings</em></strong>,
+                        and receive teachings from the author himself.
+                    </p>
+                    <p>
+                        Through this topic, you will delve deeper into the emotions you experience in
+                        everyday life. Each chapter explores emotions such as anger, fear, jealousy, guilt,
+                        love and sadness, among many others. The text invites you to question whether you
+                        control these emotions or whether they control you.
+                    </p>
+                    <p>
+                        These emotions can feel intense and overwhelming, sometimes blocking out our light.
+                        But <strong>we are not the storm; we are the sky.</strong> The book blends timeless
+                        Vedantic wisdom with modern psychology to offer a practical roadmap for spiritual seekers.
+                    </p>
                 </div>
             </details>
 
-            <details class="faq-item" id="faq-dates">
-                <summary><span class="faq-question"><img src="Icons/calendar.png" class="faq-icon" alt="">When and where is the camp?</span></summary>
+            <details class="faq-item" id="faq-swami">
+                <summary class="faq-title">
+                    <span class="faq-question-content">Who is Pujya Swami Swaroopananda?
+                    </span>
+                </summary>
                 <div class="faq-answer">
-                    FAQ placeholder. Add event dates and venue information here.
+                    <p>
+                        Pujya Swamiji is the Head of Chinmaya Mission Worldwide. After studying under the
+                        pre-eminent Master of Vedanta, H.H. Swami Chinmayananda-ji, Pujya Swamiji has become
+                        a guiding light to youth all over the world.
+                    </p>
+                    <p>
+                        With his charismatic yet tranquil nature, Pujya Swamiji has a rare voice that blends
+                        authenticity with accessibility, and logic with heart. He teaches the messages of
+                        the scriptures in a way that inspires and captivates all.
+                    </p>
                 </div>
             </details>
 
             <details class="faq-item" id="faq-booking">
-                <summary><span class="faq-question"><img src="Icons/ticket.png" class="faq-icon" alt="">How do I book my ticket?</span></summary>
+                <summary class="faq-title">
+                    <span class="faq-question-content"><img src="Icons/airplane-ticket.png" class="faq-icon" alt="">
+                    How do I book my ticket?
+                    </span>
+                </summary>
                 <div class="faq-answer">
-                    FAQ placeholder. Add booking instructions here.
+                    <p>
+                        <strong><a href="#booking" onclick="scrollToBooking(); return false;">Click here to navigate to the booking form.</a></strong>
+                    </p>
+                    <p>
+                        If you prefer, you can also book directly through the
+                        <a href="https://www.trybooking.com/au/event/1684478" target="_blank" rel="noopener noreferrer">TryBooking website</a>.
+                    </p>
                 </div>
             </details>
 
             <details class="faq-item" id="faq-accommodation">
-                <summary><span class="faq-question"><img src="Icons/accommodation.png" class="faq-icon" alt="">Where will I be staying?</span></summary>
+                <summary class="faq-title">
+                    <span class="faq-question-content"><img src="Icons/bed.png" class="faq-icon" alt="">
+                    Where will I be staying?
+                    </span>
+                </summary>
                 <div class="faq-answer">
-                    FAQ placeholder. Add accommodation information here.
+                    <p>
+                        We will be staying at the lovely <strong>Crosslands Youth &amp; Convention Centre</strong>
+                        in Galston, New South Wales, Australia.
+                    </p>
+                    <p>
+                        Crosslands Youth &amp; Convention Centre is a family-friendly campsite located in
+                        Galston Gorge, approximately an hour's drive from Sydney's CBD. The main entrance
+                        is accessible via Crosslands Road by car, trailer, van or minibus.
+                    </p>
                 </div>
             </details>
 
@@ -1060,30 +1208,76 @@ footer p {
         <div>
 
             <details class="faq-item" id="faq-cars">
-                <summary><span class="faq-question"><img src="Icons/transport.png" class="faq-icon" alt="">How do I get to the destination?</span></summary>
+                <summary class="faq-title">
+                    <span class="faq-question-content"><img src="Icons/destination.png" class="faq-icon" alt="">
+                    How do I get to the campgrounds?
+                    </span>
+                </summary>
                 <div class="faq-answer">
-                    FAQ placeholder. Add transport and travel information here.
+                    <p><strong>For those travelling from Sydney:</strong> Driving is the primary way to get
+                    to the campgrounds. We will also be organising carpooling for anyone who needs it.</p>
+                    <p><strong>For those travelling from outside Sydney:</strong> We will organise transport
+                    between the airport and the venue. A form to collect your flight details will be available
+                    soon, so keep an eye out for further information.</p>
                 </div>
             </details>
 
             <details class="faq-item" id="faq-inclusions">
-                <summary><span class="faq-question"><img src="Icons/inclusions.png" class="faq-icon" alt="">What is included in my ticket?</span></summary>
+                <summary class="faq-title">
+                    <span class="faq-question-content"><img src="Icons/airplane-ticket.png" class="faq-icon" alt="">
+                    What's included in my ticket?
+                    </span>
+                </summary>
                 <div class="faq-answer">
-                    FAQ placeholder. Add ticket inclusions here.
+                    <p><strong>Lectures by Swami Swaroopananda:</strong> The Global Head of Chinmaya Mission
+                    will guide us through the intricacies of our emotions.</p>
+                    <p><strong>Hands-on discussion groups:</strong> Take part in insightful discussions with
+                    fellow learners, encouraging deeper realisations and meaningful connections.</p>
+                    <p><strong>Interactive and fun activities:</strong> Test your knowledge through engaging
+                    activities that help you put the teachings into practice.</p>
+                    <p><strong>These sessions will explore:</strong></p>
+                    <ul>
+                        <li><strong>Experiencing, not suppressing:</strong> Acknowledging our emotions without
+                        allowing them to define us.</li>
+                        <li><strong>Responding vs. reacting:</strong> Finding the freedom to pause and choose
+                        how we respond to life's challenges.</li>
+                        <li><strong>Navigating modern digital pressures:</strong> Building inner awareness so
+                        that external validation does not dictate our self-worth.</li>
+                        <li><strong>Destigmatising vulnerability:</strong> Challenging the pressure on young
+                        people to have everything figured out.</li>
+                        <li><strong>Chapter-by-chapter practicality:</strong> Exploring each core emotion
+                        through in-depth philosophy and practical insights.</li>
+                    </ul>
                 </div>
             </details>
 
             <details class="faq-item" id="faq-packing">
-                <summary><span class="faq-question"><img src="Icons/packing.png" class="faq-icon" alt="">What should I pack?</span></summary>
+                <summary class="faq-title">
+                    <span class="faq-question-content"><img src="Icons/luggage.png" class="faq-icon" alt="">
+                    What should I pack?
+                    </span>
+                </summary>
                 <div class="faq-answer">
-                    FAQ placeholder. Add packing information here.
+                    <p>We will be adding a packing list below soon. Keep an eye out for updates!</p>
                 </div>
             </details>
 
             <details class="faq-item" id="faq-contact">
-                <summary><span class="faq-question"><img src="Icons/contact.png" class="faq-icon" alt="">Who can I contact for help?</span></summary>
+                <summary class="faq-title">
+                    <span class="faq-question-content"><img src="Icons/help.png" class="faq-icon" alt="">
+                    Who can I contact for help?
+                    </span>
+                </summary>
                 <div class="faq-answer">
-                    FAQ placeholder. Add contact information here.
+                    <p>
+                        If you have any questions, email us at
+                        <a href="mailto:chyk.sydney@chinmaya.com.au">chyk.sydney@chinmaya.com.au</a>.
+                    </p>
+                    <p>You can also contact our Sydney CHYK coordinators:</p>
+                    <ul>
+                        <li><strong>Ananya Uppal:</strong> <a href="tel:+61429007880">+61 429 007 880</a></li>
+                        <li><strong>Niharika Gupta:</strong> <a href="tel:+61470648992">+61 470 648 992</a></li>
+                    </ul>
                 </div>
             </details>
 
@@ -1094,7 +1288,8 @@ footer p {
 </section>
 
 
-<!-- START PLANNING YOUR ADVENTURE -->
+<!-- PREVIOUS PLANNING SECTION (retained for future use; currently disabled)
+/* START PLANNING YOUR ADVENTURE */
 
 <section class="planning-section">
 
@@ -1102,26 +1297,23 @@ footer p {
 
     <div class="planning-tabs">
 
-        <button class="active" type="button"
+        <button class="active"
                 onclick="showPlanningTab('merch', this)">
-            <img src="Icons/merch.png" class="tab-icon" alt="">
-            <span>Merch</span>
+            Merch
         </button>
 
-        <button type="button" onclick="showPlanningTab('itinerary', this)">
-            <img src="Icons/itinerary.png" class="tab-icon" alt="">
-            <span>Itinerary</span>
+        <button onclick="showPlanningTab('itinerary', this)">
+            Itinerary
         </button>
 
-        <button type="button" onclick="showPlanningTab('packing', this)">
-            <img src="Icons/packing.png" class="tab-icon" alt="">
-            <span>Packing</span>
+        <button onclick="showPlanningTab('packing', this)">
+            Packing
         </button>
 
     </div>
 
 
-    <!-- MERCH TAB -->
+    /* MERCH TAB */
 
     <div id="merch" class="planning-content">
 
@@ -1190,7 +1382,7 @@ footer p {
     </div>
 
 
-    <!-- ITINERARY TAB -->
+    /* ITINERARY TAB */
 
     <div id="itinerary" class="planning-content" hidden>
 
@@ -1274,7 +1466,7 @@ footer p {
     </div>
 
 
-    <!-- PACKING TAB -->
+    /* PACKING TAB */
 
     <div id="packing" class="planning-content" hidden>
 
@@ -1334,6 +1526,32 @@ footer p {
         </p>
 
     </div>
+
+</section>
+-->
+
+<!-- PLANNING SECTION: TAB BUTTONS RETAINED; CONTENT COMING SOON -->
+<section class="planning-section">
+
+    <h2>Start planning your adventure</h2>
+
+    <div class="planning-tabs">
+        <button class="active" onclick="showPlanningTab('merch', this)">
+            Merch
+        </button>
+
+        <button onclick="showPlanningTab('itinerary', this)">
+            <img src="Icons/itinerary.png" class="tab-icon" alt="">
+            Itinerary
+        </button>
+
+        <button onclick="showPlanningTab('packing', this)">
+            <img src="Icons/luggage.png" class="tab-icon" alt="">
+            Packing
+        </button>
+    </div>
+
+    <p class="planning-coming-soon">Get excited, more information on this coming soon!</p>
 
 </section>
 
@@ -1436,22 +1654,25 @@ function changeMerchImage(button, imageUrl) {
 
 function showPlanningTab(tabId, button) {
 
-    // Hide all content panels
-    document.querySelectorAll(".planning-content").forEach(panel => {
-        panel.hidden = true;
-    });
-
-    // Remove active styling from all tabs
+    // Keep the selected tab highlighted while the section content is coming soon.
     document.querySelectorAll(".planning-tabs button").forEach(tab => {
         tab.classList.remove("active");
     });
 
-    // Show selected content
-    document.getElementById(tabId).hidden = false;
-
-    // Highlight selected button
     button.classList.add("active");
 
+}
+
+function openFaqSection() {
+    const faq = document.getElementById("faq");
+
+    faq.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+    // Open the first FAQ question
+    document.getElementById("faq-contact").open = true;
 }
 
 </script>
