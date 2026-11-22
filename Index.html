@@ -820,7 +820,11 @@ footer p {
     }
 
     .destination-image {
-        min-height: 220px;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            overflow: hidden;
     }
 
     .destination-info {
@@ -963,7 +967,9 @@ footer p {
 
     <div class="destination-card">
 
-        <div class="destination-image"></div>
+        <div class="destination-image">
+            <img src="ChykCampFlyer.jpg" alt="CHYK Camp Flyer">
+        </div>
 
         <div class="destination-info">
 
