@@ -131,6 +131,14 @@ body {
     margin: auto;
 }
 
+.title-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
 .hero h1 {
     font-size: clamp(30px, 3vw, 45px);
     color: white;
@@ -220,11 +228,20 @@ body {
 }
 
 .field-label {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 7px;
     font-size: 14px;
     font-weight: bold;
     color: var(--muted);
     margin-bottom: 8px;
+}
+
+.field-icon {
+    width: 19px;
+    height: 19px;
+    object-fit: contain;
+    flex-shrink: 0;
 }
 
 .field strong {
@@ -357,6 +374,19 @@ body {
     padding: 0 40px;
 }
 
+.faq-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.faq-icon {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
 .faq-section h2 {
     font-size: 36px;
     margin-bottom: 25px;
@@ -474,6 +504,14 @@ body {
     background: var(--orange);
     color: white;
     border-color: var(--orange);
+}
+
+.tab-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    vertical-align: middle;
+    margin-right: 8px;
 }
 
 /* INFORMATION LINKS */
@@ -940,7 +978,10 @@ footer p {
         </button>
     </div>
 
-    <h1>Beyond the Frontiers</h1>
+    <h1>
+        Beyond the Frontiers
+        <img src="Icons/plane.png" class="title-icon" alt="">
+    </h1>
 
     <div class="search-options">
         <span>One way</span>
@@ -963,14 +1004,20 @@ footer p {
         </label>
 
         <label class="field">
-            <span class="field-label">Depart</span>
+            <span class="field-label">
+                Depart
+                <img src="Icons/departures.png" class="field-icon" alt="">
+            </span>
             <input type="text" value="12 Mar 2027" readonly aria-label="Departure date: 12 March 2027"
-                   onfocus="showNotice()" onblur="hideNotice()">
+                    onfocus="showNotice()" onblur="hideNotice()">
             <small>Friday</small>
         </label>
 
         <label class="field">
-            <span class="field-label">Return</span>
+            <span class="field-label">
+                Return
+                <img src="Icons/landing.png" class="field-icon" alt="">
+            </span>
             <input type="text" value="14 Mar 2027" readonly aria-label="Return date: 14 March 2027"
                    onfocus="showNotice()" onblur="hideNotice()">
             <small>Sunday</small>
@@ -1056,7 +1103,7 @@ footer p {
         <div>
 
             <details class="faq-item" id="faq-flights">
-                <summary>What is CHYK Camp?</summary>
+                <summary class="faq-title">What is CHYK Camp?</summary>      
                 <div class="faq-answer">
                     <p>
                         CHYK Camp is an immersive retreat led by <strong>Pujya Swami Swaroopananda</strong>,
@@ -1084,7 +1131,7 @@ footer p {
             </details>
 
             <details class="faq-item" id="faq-swami">
-                <summary>Who is Pujya Swami Swaroopananda?</summary>
+                <summary class="faq-title">Who is Pujya Swami Swaroopananda?</summary>
                 <div class="faq-answer">
                     <p>
                         Pujya Swamiji is the Head of Chinmaya Mission Worldwide. After studying under the
@@ -1100,7 +1147,9 @@ footer p {
             </details>
 
             <details class="faq-item" id="faq-booking">
-                <summary>How do I book my ticket?</summary>
+                <summary class="faq-title">
+                    How do I book my ticket?
+                </summary>
                 <div class="faq-answer">
                     <p>
                         <strong><a href="#booking" onclick="scrollToBooking(); return false;">Click here to navigate to the booking form.</a></strong>
@@ -1113,7 +1162,7 @@ footer p {
             </details>
 
             <details class="faq-item" id="faq-accommodation">
-                <summary>Where will I be staying?</summary>
+                <summary class="faq-title">Where will I be staying?</summary>
                 <div class="faq-answer">
                     <p>
                         We will be staying at the lovely <strong>Crosslands Youth &amp; Convention Centre</strong>
@@ -1132,7 +1181,7 @@ footer p {
         <div>
 
             <details class="faq-item" id="faq-cars">
-                <summary>How do I get to the campgrounds?</summary>
+                <summary class="faq-title">How do I get to the campgrounds?</summary>
                 <div class="faq-answer">
                     <p><strong>For those travelling from Sydney:</strong> Driving is the primary way to get
                     to the campgrounds. We will also be organising carpooling for anyone who needs it.</p>
@@ -1143,7 +1192,10 @@ footer p {
             </details>
 
             <details class="faq-item" id="faq-inclusions">
-                <summary>What's included in my ticket?</summary>
+                <summary class="faq-title">
+                    What's included in my ticket?
+                    <img src="Icons/airplane-ticket.png" class="faq-icon" alt="">
+                </summary>
                 <div class="faq-answer">
                     <p><strong>Lectures by Swami Swaroopananda:</strong> The Global Head of Chinmaya Mission
                     will guide us through the intricacies of our emotions.</p>
@@ -1168,7 +1220,10 @@ footer p {
             </details>
 
             <details class="faq-item" id="faq-packing">
-                <summary>What should I pack?</summary>
+                <summary class="faq-title">
+                    What should I pack?
+                    <img src="Icons/luggage.png" class="faq-icon" alt="">
+                </summary>
                 <div class="faq-answer">
                     <p>We will be adding a packing list below soon. Keep an eye out for updates!</p>
                 </div>
@@ -1443,17 +1498,19 @@ footer p {
 
     <h2>Start planning your adventure</h2>
 
-    <div class="planning-tabs">
-        <button class="active" type="button" onclick="showPlanningTab('merch', this)">
-            Merch
-        </button>
-        <button type="button" onclick="showPlanningTab('itinerary', this)">
-            Itinerary
-        </button>
-        <button type="button" onclick="showPlanningTab('packing', this)">
-            Packing
-        </button>
-    </div>
+    <button class="active" onclick="showPlanningTab('merch', this)">
+        Merch
+    </button>
+
+    <button onclick="showPlanningTab('itinerary', this)">
+        Itinerary
+        <img src="Icons/itinerary.png" class="tab-icon" alt="">
+    </button>
+
+    <button onclick="showPlanningTab('packing', this)">
+        Packing
+        <img src="Icons/luggage.png" class="tab-icon" alt="">
+    </button>
 
     <p class="planning-coming-soon">Get excited, more information on this coming soon!</p>
 
