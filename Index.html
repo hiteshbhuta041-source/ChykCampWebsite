@@ -469,58 +469,182 @@ body {
 
 .merch-intro .placeholder-label { display: block; }
 
-.merch-grid {
+.merch-product {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 24px;
-}
-
-.merch-card {
-    min-width: 0;
-    overflow: hidden;
+    grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr);
+    gap: clamp(28px, 5vw, 64px);
+    align-items: start;
+    padding: 28px;
     border: 1px solid var(--border);
-    border-radius: 14px;
+    border-radius: 16px;
     background: #fff;
     box-shadow: 0 5px 18px rgba(25,35,45,.045);
 }
 
-.merch-card > img {
-    display: block;
+.merch-gallery { min-width: 0; }
+
+.merch-main-image {
+    overflow: hidden;
     width: 100%;
-    height: 245px;
-    object-fit: cover;
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
     background: #f5f5f5;
 }
 
-.merch-card-body { padding: 22px; }
+.merch-main-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-.merch-card-heading {
+.merch-thumbnails {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.merch-thumbnail {
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    padding: 0;
+    border: 2px solid transparent;
+    border-radius: 9px;
+    background: #f5f5f5;
+    cursor: pointer;
+}
+
+.merch-thumbnail.active { border-color: var(--orange); }
+
+.merch-thumbnail img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.merch-product-details { padding: 12px 4px; }
+
+.merch-eyebrow {
+    margin-bottom: 12px;
+    color: var(--orange-dark);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .12em;
+}
+
+.merch-product-heading {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 12px;
+    gap: 16px;
 }
 
-.merch-card-heading h3 { font-size: 19px; line-height: 1.35; }
-.merch-card-heading strong { color: var(--orange-dark); white-space: nowrap; font-size: 18px; }
-.merch-description { margin-top: 10px; color: var(--muted); line-height: 1.55; font-size: 14px; }
-.merch-meta { margin-top: 12px; font-size: 13px; color: var(--muted); }
+.merch-product-heading h3 {
+    font-size: clamp(24px, 3vw, 32px);
+    line-height: 1.2;
+}
 
-.size-guide { margin-top: 17px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-.size-guide summary { cursor: pointer; padding: 13px 0; color: var(--orange-dark); font-weight: 700; font-size: 14px; }
-.size-guide-content { padding: 0 0 15px; color: var(--muted); font-size: 12px; line-height: 1.5; overflow-x: auto; }
-.size-guide-content table { width: 100%; margin-top: 10px; border-collapse: collapse; text-align: left; font-size: 12px; }
-.size-guide-content th, .size-guide-content td { padding: 6px 5px; border-bottom: 1px solid var(--border); }
+.merch-product-heading strong {
+    color: var(--orange-dark);
+    white-space: nowrap;
+    font-size: 24px;
+}
+
+.merch-description {
+    margin-top: 16px;
+    color: var(--muted);
+    line-height: 1.65;
+    font-size: 15px;
+}
+
+.merch-meta {
+    margin-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.merch-size-selector { margin-top: 28px; }
+
+.merch-size-selector label {
+    display: block;
+    margin-bottom: 9px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.merch-size-selector select {
+    width: 100%;
+    min-height: 48px;
+    padding: 0 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--text);
+    font: inherit;
+}
+
+.size-guide {
+    margin-top: 18px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.size-guide summary {
+    cursor: pointer;
+    padding: 15px 0;
+    color: var(--orange-dark);
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.size-guide-content {
+    padding: 0 0 15px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.5;
+    overflow-x: auto;
+}
+
+.size-guide-content table {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 12px;
+}
+
+.size-guide-content th, .size-guide-content td {
+    padding: 7px 6px;
+    border-bottom: 1px solid var(--border);
+}
 
 .merch-link {
-    display: inline-block;
-    margin-top: 17px;
-    color: var(--orange-dark);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    width: 100%;
+    margin-top: 22px;
+    border-radius: 8px;
+    background: var(--orange);
+    color: #171717;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 800;
     text-decoration: none;
 }
-.merch-link:hover { text-decoration: underline; }
+
+.merch-link:hover { background: var(--orange-dark); }
+
+.merch-note {
+    margin-top: 13px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: center;
+}
 
 /* ITINERARY */
 
@@ -713,12 +837,17 @@ footer p {
     }
 
     .quick-links,
-    .packing-grid,
-    .merch-grid {
+    .packing-grid {
         grid-template-columns: 1fr;
     }
 
-    .merch-card > img { height: 230px; }
+    .merch-product {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        padding: 18px;
+    }
+
+    .merch-product-details { padding: 4px 0; }
 
     .itinerary-event {
         gap: 10px;
@@ -966,66 +1095,66 @@ footer p {
 
         <div class="merch-intro">
             <p>Take a little piece of the journey home. Official camp merchandise details are coming soon.</p>
-            <span class="placeholder-label">Product images, prices and links below are placeholders.</span>
+            <span class="placeholder-label">Product images, price and links are placeholders.</span>
         </div>
 
-        <div class="merch-grid">
-            <article class="merch-card">
-                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=900&auto=format&fit=crop&q=85"
-                     alt="Plain white T-shirt mock-up" loading="lazy">
-                <div class="merch-card-body">
-                    <div class="merch-card-heading"><h3>CHYK Camp T-shirt</h3><strong>$30</strong></div>
-                    <p class="merch-description">A classic camp tee. Comfortable everyday fit.</p>
-                    <p class="merch-meta">Sizes: XS–3XL · Placeholder price</p>
-                    <details class="size-guide">
-                        <summary>View sizing guide</summary>
-                        <div class="size-guide-content">
-                            <p>Indicative measurements only — replace with supplier sizing before orders open.</p>
-                            <table><thead><tr><th>Size</th><th>Chest (cm)</th><th>Length (cm)</th></tr></thead>
-                            <tbody><tr><td>XS</td><td>46</td><td>66</td></tr><tr><td>S</td><td>49</td><td>69</td></tr><tr><td>M</td><td>52</td><td>72</td></tr><tr><td>L</td><td>55</td><td>75</td></tr><tr><td>XL</td><td>58</td><td>78</td></tr><tr><td>2XL</td><td>61</td><td>81</td></tr><tr><td>3XL</td><td>64</td><td>84</td></tr></tbody></table>
-                        </div>
-                    </details>
-                    <a class="merch-link" href="#" onclick="return false;">Shop link coming soon ↗</a>
+        <article class="merch-product">
+            <div class="merch-gallery">
+                <div class="merch-main-image">
+                    <img id="merch-main-image"
+                         src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=1200&auto=format&fit=crop&q=90"
+                         alt="CHYK Camp T-shirt product view">
                 </div>
-            </article>
+                <div class="merch-thumbnails" aria-label="Product image gallery">
+                    <button class="merch-thumbnail active" type="button"
+                            onclick="changeMerchImage(this, 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=1200&auto=format&fit=crop&q=90')"
+                            aria-label="View product image 1">
+                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=300&auto=format&fit=crop&q=80" alt="">
+                    </button>
+                    <button class="merch-thumbnail" type="button"
+                            onclick="changeMerchImage(this, 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=1200&auto=format&fit=crop&q=90')"
+                            aria-label="View product image 2">
+                        <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=300&auto=format&fit=crop&q=80" alt="">
+                    </button>
+                    <button class="merch-thumbnail" type="button"
+                            onclick="changeMerchImage(this, 'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=1200&auto=format&fit=crop&q=90')"
+                            aria-label="View product image 3">
+                        <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=300&auto=format&fit=crop&q=80" alt="">
+                    </button>
+                </div>
+            </div>
 
-            <article class="merch-card">
-                <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=900&auto=format&fit=crop&q=85"
-                     alt="Sweatshirt mock-up" loading="lazy">
-                <div class="merch-card-body">
-                    <div class="merch-card-heading"><h3>CHYK Camp Hoodie</h3><strong>$55</strong></div>
-                    <p class="merch-description">A cosy layer for the trip and cooler evenings.</p>
-                    <p class="merch-meta">Sizes: XS–3XL · Placeholder price</p>
-                    <details class="size-guide">
-                        <summary>View sizing guide</summary>
-                        <div class="size-guide-content">
-                            <p>Indicative measurements only — confirm against the selected supplier.</p>
-                            <table><thead><tr><th>Size</th><th>Chest (cm)</th><th>Length (cm)</th></tr></thead>
-                            <tbody><tr><td>XS</td><td>50</td><td>64</td></tr><tr><td>S</td><td>53</td><td>67</td></tr><tr><td>M</td><td>56</td><td>70</td></tr><tr><td>L</td><td>59</td><td>73</td></tr><tr><td>XL</td><td>62</td><td>76</td></tr><tr><td>2XL</td><td>65</td><td>79</td></tr><tr><td>3XL</td><td>68</td><td>82</td></tr></tbody></table>
-                        </div>
-                    </details>
-                    <a class="merch-link" href="#" onclick="return false;">Shop link coming soon ↗</a>
+            <div class="merch-product-details">
+                <p class="merch-eyebrow">OFFICIAL CAMP MERCHANDISE</p>
+                <div class="merch-product-heading">
+                    <h3>CHYK Camp T-shirt</h3>
+                    <strong>$30</strong>
                 </div>
-            </article>
+                <p class="merch-description">A classic camp tee. Comfortable everyday fit and a keepsake from your journey Beyond The Frontier.</p>
+                <p class="merch-meta">Placeholder price · Sizes XS–3XL</p>
 
-            <article class="merch-card">
-                <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=900&auto=format&fit=crop&q=85"
-                     alt="Canvas tote bag mock-up" loading="lazy">
-                <div class="merch-card-body">
-                    <div class="merch-card-heading"><h3>CHYK Camp Tote Bag</h3><strong>$18</strong></div>
-                    <p class="merch-description">A simple carry-all for camp essentials.</p>
-                    <p class="merch-meta">One size · Placeholder price</p>
-                    <details class="size-guide">
-                        <summary>View dimensions</summary>
-                        <div class="size-guide-content">
-                            <p>Indicative dimensions: 38 cm wide × 42 cm high, with 30 cm handles.</p>
-                            <p>Final dimensions to be confirmed with the supplier.</p>
-                        </div>
-                    </details>
-                    <a class="merch-link" href="#" onclick="return false;">Shop link coming soon ↗</a>
+                <div class="merch-size-selector">
+                    <label for="merch-size">Select a size</label>
+                    <select id="merch-size">
+                        <option value="">Choose your size</option>
+                        <option>XS</option><option>S</option><option>M</option>
+                        <option>L</option><option>XL</option><option>2XL</option><option>3XL</option>
+                    </select>
                 </div>
-            </article>
-        </div>
+
+                <details class="size-guide">
+                    <summary>View sizing guide</summary>
+                    <div class="size-guide-content">
+                        <p>Indicative measurements only — replace with supplier sizing before orders open.</p>
+                        <table><thead><tr><th>Size</th><th>Chest (cm)</th><th>Length (cm)</th></tr></thead>
+                        <tbody><tr><td>XS</td><td>46</td><td>66</td></tr><tr><td>S</td><td>49</td><td>69</td></tr><tr><td>M</td><td>52</td><td>72</td></tr><tr><td>L</td><td>55</td><td>75</td></tr><tr><td>XL</td><td>58</td><td>78</td></tr><tr><td>2XL</td><td>61</td><td>81</td></tr><tr><td>3XL</td><td>64</td><td>84</td></tr></tbody></table>
+                    </div>
+                </details>
+
+                <a class="merch-link" href="#" onclick="return false;">Merchandise orders coming soon ↗</a>
+                <p class="merch-note">Final product details, pricing and ordering information will be confirmed closer to camp.</p>
+            </div>
+        </article>
     </div>
 
 
@@ -1262,6 +1391,16 @@ function openFaq(id) {
 
 
 // Switch between Information, Itinerary and Packing
+
+function changeMerchImage(button, imageUrl) {
+    const mainImage = document.getElementById("merch-main-image");
+    if (!mainImage) return;
+    mainImage.src = imageUrl;
+    document.querySelectorAll(".merch-thumbnail").forEach((thumbnail) => {
+        thumbnail.classList.remove("active");
+    });
+    button.classList.add("active");
+}
 
 function showPlanningTab(tabId, button) {
 
