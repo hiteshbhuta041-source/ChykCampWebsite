@@ -63,10 +63,10 @@ body {
 
 .logo-mark {
     display: block;
-    height: 48px;
+    height: 52px;
     width: auto;
-    border-radius: 7px;
-    background: var(--orange);
+    object-fit: contain;
+    background: transparent;
 }
 
 .logo span {
@@ -171,9 +171,19 @@ body {
     border: 1px solid var(--border);
     min-width: 0;
     text-align: left;
-    padding: 20px;
-    cursor: pointer;
-    transition: background .2s;
+    padding: 16px 18px;
+    cursor: text;
+    transition: border-color .2s, box-shadow .2s, background .2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.field:focus-within {
+    outline: none;
+    border-color: var(--orange-dark);
+    box-shadow: 0 0 0 2px rgba(230,130,27,.16);
+    background: #fffdfb;
 }
 
 .field:first-child {
@@ -185,7 +195,29 @@ body {
 }
 
 .field:hover {
-    background: var(--orange-pale);
+    background: #fffaf5;
+}
+
+.field input {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    color: var(--text);
+    font: inherit;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.3;
+    cursor: text;
+    caret-color: var(--orange-dark);
+}
+
+.field input[readonly] {
+    user-select: text;
 }
 
 .field-label {
@@ -427,6 +459,69 @@ body {
     text-decoration: underline;
 }
 
+/* MERCH */
+
+.merch-intro {
+    margin: 0 0 22px;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.merch-intro .placeholder-label { display: block; }
+
+.merch-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.merch-card {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 5px 18px rgba(25,35,45,.045);
+}
+
+.merch-card > img {
+    display: block;
+    width: 100%;
+    height: 245px;
+    object-fit: cover;
+    background: #f5f5f5;
+}
+
+.merch-card-body { padding: 22px; }
+
+.merch-card-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.merch-card-heading h3 { font-size: 19px; line-height: 1.35; }
+.merch-card-heading strong { color: var(--orange-dark); white-space: nowrap; font-size: 18px; }
+.merch-description { margin-top: 10px; color: var(--muted); line-height: 1.55; font-size: 14px; }
+.merch-meta { margin-top: 12px; font-size: 13px; color: var(--muted); }
+
+.size-guide { margin-top: 17px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.size-guide summary { cursor: pointer; padding: 13px 0; color: var(--orange-dark); font-weight: 700; font-size: 14px; }
+.size-guide-content { padding: 0 0 15px; color: var(--muted); font-size: 12px; line-height: 1.5; overflow-x: auto; }
+.size-guide-content table { width: 100%; margin-top: 10px; border-collapse: collapse; text-align: left; font-size: 12px; }
+.size-guide-content th, .size-guide-content td { padding: 6px 5px; border-bottom: 1px solid var(--border); }
+
+.merch-link {
+    display: inline-block;
+    margin-top: 17px;
+    color: var(--orange-dark);
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+}
+.merch-link:hover { text-decoration: underline; }
+
 /* ITINERARY */
 
 .itinerary-day {
@@ -618,9 +713,12 @@ footer p {
     }
 
     .quick-links,
-    .packing-grid {
+    .packing-grid,
+    .merch-grid {
         grid-template-columns: 1fr;
     }
+
+    .merch-card > img { height: 230px; }
 
     .itinerary-event {
         gap: 10px;
@@ -641,7 +739,7 @@ footer p {
     <div class="nav-inner">
 
         <div class="logo">
-            <img class="logo-mark" src="chyk-air-logo.png" alt="CHYK Camp logo">
+            <img class="logo-mark" src="chyk-air-logo-transparent-orange.png" alt="CHYK Camp logo">
             <span>CHYK<span>AIR</span></span>
         </div>
 
@@ -680,29 +778,33 @@ footer p {
 
     <div class="flight-fields">
 
-        <button class="field" onclick="showNotice()">
+        <label class="field">
             <span class="field-label">From</span>
-            <strong>Sydney (Any)</strong>
+            <input type="text" value="Sydney (Any)" readonly aria-label="From: Sydney, Australia"
+                   onfocus="showNotice()" onblur="hideNotice()">
             <small>Australia</small>
-        </button>
+        </label>
 
-        <button class="field" onclick="showNotice()">
+        <label class="field">
             <span class="field-label">To</span>
-            <strong>Beyond The Frontier</strong>
+            <input type="text" value="Beyond The Frontier" readonly aria-label="To: Beyond The Frontier"
+                   onfocus="showNotice()" onblur="hideNotice()">
             <small>Your destination awaits</small>
-        </button>
+        </label>
 
-        <button class="field" onclick="showNotice()">
+        <label class="field">
             <span class="field-label">Depart</span>
-            <strong>12 Mar 2027</strong>
+            <input type="text" value="12 Mar 2027" readonly aria-label="Departure date: 12 March 2027"
+                   onfocus="showNotice()" onblur="hideNotice()">
             <small>Friday</small>
-        </button>
+        </label>
 
-        <button class="field" onclick="showNotice()">
+        <label class="field">
             <span class="field-label">Travellers</span>
-            <strong>1 Traveller</strong>
+            <input type="text" value="1 Traveller" readonly aria-label="Travellers: 1"
+                   onfocus="showNotice()" onblur="hideNotice()">
             <small>Economy · Adventure class</small>
-        </button>
+        </label>
 
         <button class="search-button" onclick="scrollToBooking()">
             Search
@@ -843,8 +945,8 @@ footer p {
     <div class="planning-tabs">
 
         <button class="active"
-                onclick="showPlanningTab('information', this)">
-            Information
+                onclick="showPlanningTab('merch', this)">
+            Merch
         </button>
 
         <button onclick="showPlanningTab('itinerary', this)">
@@ -858,56 +960,72 @@ footer p {
     </div>
 
 
-    <!-- INFORMATION TAB -->
+    <!-- MERCH TAB -->
 
-    <div id="information" class="planning-content">
+    <div id="merch" class="planning-content">
 
-        <div class="quick-links">
-
-            <div>
-                <a href="#faq-flights" onclick="openFaq('faq-flights')">
-                    What is CHYK Camp?
-                </a>
-
-                <a href="#faq-dates" onclick="openFaq('faq-dates')">
-                    Camp dates and location
-                </a>
-
-                <a href="#faq-booking" onclick="openFaq('faq-booking')">
-                    Booking your ticket
-                </a>
-            </div>
-
-            <div>
-                <a href="#faq-accommodation" onclick="openFaq('faq-accommodation')">
-                    Accommodation information
-                </a>
-
-                <a href="#faq-cars" onclick="openFaq('faq-cars')">
-                    Getting to the camp
-                </a>
-
-                <a href="#faq-inclusions" onclick="openFaq('faq-inclusions')">
-                    Ticket inclusions
-                </a>
-            </div>
-
-            <div>
-                <a href="#faq-packing" onclick="openFaq('faq-packing')">
-                    What to pack
-                </a>
-
-                <a href="#faq-contact" onclick="openFaq('faq-contact')">
-                    Contact and support
-                </a>
-
-                <a href="#booking" onclick="scrollToBooking()">
-                    Register for camp
-                </a>
-            </div>
-
+        <div class="merch-intro">
+            <p>Take a little piece of the journey home. Official camp merchandise details are coming soon.</p>
+            <span class="placeholder-label">Product images, prices and links below are placeholders.</span>
         </div>
 
+        <div class="merch-grid">
+            <article class="merch-card">
+                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=900&auto=format&fit=crop&q=85"
+                     alt="Plain white T-shirt mock-up" loading="lazy">
+                <div class="merch-card-body">
+                    <div class="merch-card-heading"><h3>CHYK Camp T-shirt</h3><strong>$30</strong></div>
+                    <p class="merch-description">A classic camp tee. Comfortable everyday fit.</p>
+                    <p class="merch-meta">Sizes: XS–3XL · Placeholder price</p>
+                    <details class="size-guide">
+                        <summary>View sizing guide</summary>
+                        <div class="size-guide-content">
+                            <p>Indicative measurements only — replace with supplier sizing before orders open.</p>
+                            <table><thead><tr><th>Size</th><th>Chest (cm)</th><th>Length (cm)</th></tr></thead>
+                            <tbody><tr><td>XS</td><td>46</td><td>66</td></tr><tr><td>S</td><td>49</td><td>69</td></tr><tr><td>M</td><td>52</td><td>72</td></tr><tr><td>L</td><td>55</td><td>75</td></tr><tr><td>XL</td><td>58</td><td>78</td></tr><tr><td>2XL</td><td>61</td><td>81</td></tr><tr><td>3XL</td><td>64</td><td>84</td></tr></tbody></table>
+                        </div>
+                    </details>
+                    <a class="merch-link" href="#" onclick="return false;">Shop link coming soon ↗</a>
+                </div>
+            </article>
+
+            <article class="merch-card">
+                <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=900&auto=format&fit=crop&q=85"
+                     alt="Sweatshirt mock-up" loading="lazy">
+                <div class="merch-card-body">
+                    <div class="merch-card-heading"><h3>CHYK Camp Hoodie</h3><strong>$55</strong></div>
+                    <p class="merch-description">A cosy layer for the trip and cooler evenings.</p>
+                    <p class="merch-meta">Sizes: XS–3XL · Placeholder price</p>
+                    <details class="size-guide">
+                        <summary>View sizing guide</summary>
+                        <div class="size-guide-content">
+                            <p>Indicative measurements only — confirm against the selected supplier.</p>
+                            <table><thead><tr><th>Size</th><th>Chest (cm)</th><th>Length (cm)</th></tr></thead>
+                            <tbody><tr><td>XS</td><td>50</td><td>64</td></tr><tr><td>S</td><td>53</td><td>67</td></tr><tr><td>M</td><td>56</td><td>70</td></tr><tr><td>L</td><td>59</td><td>73</td></tr><tr><td>XL</td><td>62</td><td>76</td></tr><tr><td>2XL</td><td>65</td><td>79</td></tr><tr><td>3XL</td><td>68</td><td>82</td></tr></tbody></table>
+                        </div>
+                    </details>
+                    <a class="merch-link" href="#" onclick="return false;">Shop link coming soon ↗</a>
+                </div>
+            </article>
+
+            <article class="merch-card">
+                <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=900&auto=format&fit=crop&q=85"
+                     alt="Canvas tote bag mock-up" loading="lazy">
+                <div class="merch-card-body">
+                    <div class="merch-card-heading"><h3>CHYK Camp Tote Bag</h3><strong>$18</strong></div>
+                    <p class="merch-description">A simple carry-all for camp essentials.</p>
+                    <p class="merch-meta">One size · Placeholder price</p>
+                    <details class="size-guide">
+                        <summary>View dimensions</summary>
+                        <div class="size-guide-content">
+                            <p>Indicative dimensions: 38 cm wide × 42 cm high, with 30 cm handles.</p>
+                            <p>Final dimensions to be confirmed with the supplier.</p>
+                        </div>
+                    </details>
+                    <a class="merch-link" href="#" onclick="return false;">Shop link coming soon ↗</a>
+                </div>
+            </article>
+        </div>
     </div>
 
 
@@ -1091,7 +1209,7 @@ footer p {
 <footer>
 
     <div class="logo">
-        <img class="logo-mark" src="chyk-air-logo.png" alt="CHYK Camp logo">
+        <img class="logo-mark" src="chyk-air-logo-transparent-orange.png" alt="CHYK Camp logo">
         <span>CHYK<span>AIR</span></span>
     </div>
 
@@ -1107,6 +1225,10 @@ footer p {
 
 function showNotice() {
     document.getElementById("notice").style.display = "block";
+}
+
+function hideNotice() {
+    document.getElementById("notice").style.display = "none";
 }
 
 
