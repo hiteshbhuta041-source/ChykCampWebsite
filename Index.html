@@ -628,6 +628,15 @@ body {
     border-bottom: 1px solid var(--border);
 }
 
+.help-link {
+    cursor: pointer;
+}
+
+.help-link:hover {
+    color: var(--orange-dark);
+    text-decoration: underline;
+}
+
 .merch-link {
     display: inline-flex;
     align-items: center;
@@ -872,15 +881,14 @@ footer p {
 
         <div class="logo">
             <img class="logo-mark" src="chyk-air-logo-transparent-orange.png" alt="CHYK Camp logo">
-            <span>National <span>Chyk </span>Camp <span></span>
+            <span>National <span>Chyk </span>Camp <span>2027</span>
         </div>
 
         <div class="account-nav">
-            <span>Help</span>
+            <span class="help-link" onclick="openFaqSection()">Help</span>
             <span class="language">
                 English (AU) 🇦🇺 Australia &nbsp; $ AUD
             </span>
-            <span class="heart">♥</span>
         </div>
 
     </div>
@@ -902,7 +910,7 @@ footer p {
         </button>
     </div>
 
-    <h1>Beyond the Frontiers. National Chyk Camp 2027</h1>
+    <h1>Beyond the Frontiers</h1>
 
     <div class="search-options">
         <span>One way</span>
@@ -1439,6 +1447,18 @@ function showPlanningTab(tabId, button) {
     // Highlight selected button
     button.classList.add("active");
 
+}
+
+function openFaqSection() {
+    const faq = document.getElementById("faq");
+
+    faq.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+    // Open the first FAQ question
+    document.getElementById("faq-flights").open = true;
 }
 
 </script>
