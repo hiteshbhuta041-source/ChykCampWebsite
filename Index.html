@@ -887,6 +887,15 @@ footer p {
         padding: 20px;
     }
 
+    .logo {
+        font-size: 22px;
+        gap: 8px;
+    }
+
+    .logo-mark {
+        height: 42px;
+    }
+
     .hero {
         padding: 25px 20px 55px;
     }
@@ -951,6 +960,23 @@ footer p {
     .itinerary-time {
         min-width: 75px;
     }
+
+        /* Maximise TryBooking widget width on mobile */
+    .booking-section {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .widget-container {
+        padding: 0;
+        border-radius: 0;
+        width: 100%;
+    }
+
+    .tryb-widget {
+        width: 100%;
+        max-width: 100%;
+    }
 }
 </style>
 </head>
@@ -1013,7 +1039,7 @@ footer p {
 
         <label class="field">
             <span class="field-label">To</span>
-            <input type="text" value="Beyond The Frontier" readonly aria-label="To: Beyond The Frontier"
+            <input type="text" value="Beyond The Frontiers" readonly aria-label="To: Beyond The Frontiers"
                    onfocus="showNotice()" onblur="hideNotice()">
             <small>Your destination awaits</small>
         </label>
@@ -1092,7 +1118,7 @@ footer p {
             <p><strong>Flight Duration:</strong> 3 days, 2 nights</p>
 
             <br>
-            <p><strong>Early Bird Tickets (Available until xx/xx/xxxx) - </strong></p>
+            <p><strong>Early Bird Tickets (Available until 14/01/2027) - </strong></p>
             <p><strong>     Student Tickets:</strong> $268</p>
             <p><strong>     Working Tickets:</strong> $295</p>
             
@@ -1229,6 +1255,11 @@ footer p {
                     </span>
                 </summary>
                 <div class="faq-answer">
+                    <p><strong>
+                        As a part of your ticket you'll be provided with accomodation, 
+                        food, activity books merch, and the following in flight entertainment - 
+                        </strong>
+                    </p>
                     <p><strong>Lectures by Swami Swaroopananda:</strong> The Global Head of Chinmaya Mission
                     will guide us through the intricacies of our emotions.</p>
                     <p><strong>Hands-on discussion groups:</strong> Take part in insightful discussions with
@@ -1551,7 +1582,7 @@ footer p {
         </button>
     </div>
 
-    <p class="planning-coming-soon">Get excited, more information on this coming soon!</p>
+    <p class="planning-coming-soon">Launching Soon!</p>
 
 </section>
 
